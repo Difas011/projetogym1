@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - NEXON FITNESS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Audiowide&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/blog.css">
+</head>
+<body>
+    <main class="blog-page">
+        <div class="container">
+            <div class="blog-header">
+                <h1>Blog NEXON</h1>
+                <p>Fique por dentro das últimas novidades e dicas de fitness</p>
+                <a href="../index.html" class="btn btn-outline">
+                    <i class="fas fa-arrow-left"></i> Voltar para o menu
+                </a>
+            </div>
+
+            <div class="blog-grid">
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <img src="../images/blog/treino-casa.jpg" alt="Treino em casa" loading="lazy">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-category">Treino em Casa</span>
+                            <span class="blog-date">20/03/2024</span>
+                        </div>
+                        <h3>Treino em Casa: Guia Completo para Iniciantes</h3>
+                        <p>Aprenda como montar uma rotina de exercícios eficiente sem sair de casa.</p>
+                        <a href="blog-post.html?article=treino-casa" class="read-more">Ler mais <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <img src="../images/blog/nutricao.jpg" alt="Nutrição esportiva" loading="lazy">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-category">Nutrição</span>
+                            <span class="blog-date">18/03/2024</span>
+                        </div>
+                        <h3>Nutrição para Ganho de Massa Muscular</h3>
+                        <p>Descubra os alimentos essenciais e a dieta ideal para construir músculos.</p>
+                        <a href="blog-post.html?article=nutricao" class="read-more">Ler mais <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <img src="../images/blog/suplementacao.jpg" alt="Suplementos para treino" loading="lazy">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-category">Suplementação</span>
+                            <span class="blog-date">15/03/2024</span>
+                        </div>
+                        <h3>Suplementos Essenciais para o Seu Treino</h3>
+                        <p>Descubra quais suplementos podem ajudar a maximizar seus resultados e como usá-los corretamente.</p>
+                        <a href="blog-post.html?article=suplementacao" class="read-more">Ler mais <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+            </div>
+
+            <div class="pagination">
+                <a href="blog.html" class="active">1</a>
+                <a href="blog-page2.html">2</a>
+                <a href="blog-page3.html">3</a>
+                <a href="blog-page4.html">4</a>
+                <a href="blog-page2.html" class="next">Próximo <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <p>NEXON FITNESS</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Redes Sociais</h4>
+                        <div class="social-links">
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+                            <a href="#" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 NEXON FITNESS. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navbar = document.querySelector('.navbar');
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+            
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            }
+            
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                    this.setAttribute('aria-expanded', !isExpanded);
+                    navLinks.classList.toggle('active');
+                    this.classList.toggle('active');
+                });
+            }
+            
+            document.addEventListener('click', function(event) {
+                const isClickInsideNav = navbar.contains(event.target);
+                
+                if (!isClickInsideNav && navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    mobileMenuBtn.classList.remove('active');
+                    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                }
+            });
+            
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768 && navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    mobileMenuBtn.classList.remove('active');
+                    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
